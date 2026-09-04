@@ -24,10 +24,19 @@ collapse them into a single turn.
    `docs/designs/<feature-slug>.md`, fill it in, and get it agreed. This
    is a permanent record — it stays after the feature ships. Update the
    backlog row to `in design`, then `building` once the doc is agreed.
-6. **Build**: only after the design doc is agreed. Landing the change
-   also means updating `docs/blueprints/features.md`, the relevant
-   component blueprint(s), and `CHANGELOG.md` (see below) — and marking
-   the backlog row `done`.
+
+   **Small-change exception**: if step 3+4 turns up no real feature-set
+   or architecture impact — a small, self-contained change confined to
+   one component — a full design doc isn't required. Instead, write the
+   summary, impact, and design directly as a short inline note in the
+   backlog row (a sentence or two is enough) and get that agreed instead
+   of a separate file. Move the backlog row straight to `building`. When
+   unsure whether a change qualifies, default to writing the design doc.
+6. **Build**: only after the design doc (or, for a small change, the
+   agreed inline backlog note) is agreed. Landing the change also means
+   updating `docs/blueprints/features.md`, the relevant component
+   blueprint(s), and `CHANGELOG.md` (see below) — and marking the
+   backlog row `done`.
 
 ## Bug workflow (mandatory)
 
@@ -55,10 +64,18 @@ them into a single turn.
    approach, copy [`docs/designs/TEMPLATE.md`](docs/designs/TEMPLATE.md) to
    `docs/designs/<bug-slug>.md`, fill it in, and get it agreed. Update the
    backlog row to `in design`, then `fixing` once the doc is agreed.
-6. **Fix**: only after the design doc is agreed. Landing the fix also
-   means updating `docs/blueprints/features.md`, the relevant component
-   blueprint(s), and `CHANGELOG.md` (see below) — and marking the backlog
-   row `fixed`.
+
+   **Small-fix exception**: if step 3+4 shows no real feature-set or
+   architecture impact — a small, self-contained fix confined to one
+   component — a full design doc isn't required. Instead, write the root
+   cause and fix approach directly as a short inline note in the backlog
+   row (a sentence or two is enough) and get that agreed instead of a
+   separate file. Move the backlog row straight to `fixing`. When unsure
+   whether a fix qualifies, default to writing the design doc.
+6. **Fix**: only after the design doc (or, for a small fix, the agreed
+   inline backlog note) is agreed. Landing the fix also means updating
+   `docs/blueprints/features.md`, the relevant component blueprint(s),
+   and `CHANGELOG.md` (see below) — and marking the backlog row `fixed`.
 
 ## Docs
 

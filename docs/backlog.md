@@ -24,10 +24,17 @@ moves through the stages below in order. See the mandatory workflow in
 [`CLAUDE.md`](../CLAUDE.md) for what each status transition requires.
 
 Status values: `proposed` → `prioritized` → `in design` → `building` → `done`.
+Small, self-contained changes can skip `in design` and go straight from
+`prioritized` to `building` — see the small-change exception in
+[`CLAUDE.md`](../CLAUDE.md).
 
-| # | Feature | Status | Priority | Design doc |
-|---|---------|--------|----------|------------|
+| # | Feature | Status | Priority | Design doc / notes |
+|---|---------|--------|----------|---------------------|
 | 1 | <one-line description> | proposed | — | — |
+
+For a small change qualifying for the exception, put the agreed summary,
+impact, and design directly in the "Design doc / notes" cell (a sentence
+or two) instead of linking a file under `docs/designs/`.
 
 ## Bugs
 
@@ -36,7 +43,14 @@ through the stages below in order. See the mandatory workflow in
 [`CLAUDE.md`](../CLAUDE.md) for what each status transition requires.
 
 Status values: `reported` → `prioritized` → `in design` → `fixing` → `fixed`.
+Small, self-contained fixes can skip `in design` and go straight from
+`prioritized` to `fixing` — see the small-fix exception in
+[`CLAUDE.md`](../CLAUDE.md).
 
-| # | Bug | Status | Priority | Design doc |
-|---|-----|--------|----------|------------|
+| # | Bug | Status | Priority | Design doc / notes |
+|---|-----|--------|----------|---------------------|
 | 1 | <observed behavior> | reported | — | — |
+
+For a small fix qualifying for the exception, put the agreed root cause
+and fix approach directly in the "Design doc / notes" cell (a sentence or
+two) instead of linking a file under `docs/designs/`.

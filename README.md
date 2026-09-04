@@ -66,11 +66,15 @@ flowchart TD
     A["1. Log it\n(backlog.md, status: proposed/reported)"] --> B{"2. Prioritize\ncheckpoint"}
     B -->|agreed| C["Status: prioritized"]
     C --> D["3+4. Feature-set + architecture impact\n(described before any code)"]
-    D --> E{"checkpoint"}
-    E -->|agreed| F["5. Design doc\n(copy TEMPLATE.md, fill in, agree)"]
+    D --> E{"checkpoint:\nreal impact?"}
+    E -->|"yes"| F["5. Design doc\n(copy TEMPLATE.md, fill in, agree)"]
     F --> G{"checkpoint"}
     G -->|agreed| H["Status: in design → building/fixing"]
+    E -->|"no — small change"| F2["5. Inline note in the\nbacklog row instead"]
+    F2 --> G2{"checkpoint"}
+    G2 -->|agreed| H2["Status: prioritized → building/fixing"]
     H --> I["6. Build/fix\n+ update blueprints + CHANGELOG.md"]
+    H2 --> I
     I --> J["Status: done/fixed"]
 ```
 
@@ -93,6 +97,32 @@ articulated in plain language first. This is often where an
 under-specified request gets caught — it's much cheaper to say "wait,
 that doesn't sound right" against two paragraphs of prose than against a
 diff.
+
+## The small-change exception
+
+Not every change deserves a permanent design-doc file. A one-line copy
+fix or a config default tweak has no real feature-set or architecture
+impact — running it through the full step 5 (copy the template, fill in
+every section, get it agreed as its own file) is process for its own
+sake, and that's exactly the kind of overhead that gets people to start
+skipping the workflow altogether, including for changes that *do* need
+it.
+
+So if step 3+4 turns up nothing — no feature-set impact, no architecture
+impact, confined to one component — step 5 collapses: the summary,
+impact, and design get written and agreed as a short inline note directly
+in the backlog row instead of a separate file, and the row moves straight
+from `prioritized` to `building`/`fixing` (skipping `in design`
+entirely). Everything else about the workflow stays intact — it's still
+logged, still prioritized, still described and agreed *before* the code
+is written, and the backlog row still exists as a locatable (if terse)
+record of what happened and why.
+
+The judgment call — "is this actually small?" — is deliberately left to
+the checkpoint at step 3+4, not to whoever is making the change. If
+there's any doubt, the rule says default to the full design doc; the
+exception is meant to relieve pressure on genuinely trivial changes, not
+to become the default path that quietly swallows medium-sized ones.
 
 ## Why the design doc is separate from the backlog row
 

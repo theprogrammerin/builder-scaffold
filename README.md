@@ -15,6 +15,10 @@ exists, and how to adopt it. The other files in this folder
 the actual template — copy them into a new project as-is and start
 filling them in.
 
+For adopting into an **existing** project, [`skills/adopt-governance/`](./skills/adopt-governance/)
+is a self-contained Claude Code skill that does this for you — see
+"Adopting via the skill" below.
+
 ## The problem this solves
 
 AI coding agents (and, honestly, human contributors moving fast) default
@@ -146,7 +150,31 @@ attention has moved on. Bundling it into the definition of *done* is what
 actually makes it happen consistently — this is the single highest-
 leverage rule in the whole template.
 
+## Adopting via the skill
+
+For an existing project, [`skills/adopt-governance/`](./skills/adopt-governance/)
+is a self-contained Claude Code skill that automates the steps below —
+copy that one folder into the target project's `.claude/skills/`
+(nothing else from this repo is needed) and invoke it. It has two steps:
+
+1. **Install the structure** (always runs): copies `CLAUDE.md`,
+   `CHANGELOG.md`, and `docs/` into the project — merging into an
+   existing `CLAUDE.md` rather than overwriting it, and leaving any
+   file that already exists (a real `backlog.md`, say) untouched rather
+   than guessing how to merge real content.
+2. **Populate the docs from the codebase** (opt-in only, never runs
+   silently): drafts `blueprints/architecture.md`, `blueprints/features.md`,
+   and per-component blueprints from what's actually in the repo, and
+   seeds `backlog.md` only from real, already-stated intent (TODOs, an
+   existing roadmap file, issues you point it at) — never fabricated
+   entries. Presented as a draft for you to confirm, the same way every
+   other doc change in this workflow requires agreement before it's
+   final.
+
 ## Adopting this in a new project
+
+The manual version of the same thing, for a fresh project or if you'd
+rather not use the skill:
 
 1. Copy `CLAUDE.md`, `CHANGELOG.md`, and `docs/` into the new project
    root.
